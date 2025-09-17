@@ -13,7 +13,8 @@ import {
   FaPhone,
   FaPlay,
   FaExpand,
-  FaPause
+  FaPause,
+  FaWhatsapp,
 } from "react-icons/fa";
 
 const Portfolio = () => {
@@ -36,7 +37,9 @@ const Portfolio = () => {
     instagram: "https://www.instagram.com/seedaslamofficial/",
     youtubeMain: "https://www.youtube.com/@SaeedAslamOfficial",
     youtubeSecond: "https://youtube.com/channel/UCEjkpCS2HBPyDntcjJIF2Gw?sub_confirmation=1",
-    twitter: "https://twitter.com/saeedaslam123"
+    twitter: "https://twitter.com/saeedaslam123",
+    whatsapp:"https://wa.me/+923401477595",
+    email:"mailto:haideraslam922@gmail.com",
   };
 
   // Fetch videos from your database
@@ -343,6 +346,8 @@ const Portfolio = () => {
             <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
             <a href={socialLinks.twitter} target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
             <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer"><FaFacebook /></a>
+            <a href={socialLinks.whatsapp} target="https://web.whatsapp.com/saeedaslamofficials" rel="noopener noreferrer"><FaWhatsapp /></a>
+           
           </div>
 
           {/* Auth buttons */}
@@ -383,6 +388,7 @@ const Portfolio = () => {
               <a href={socialLinks.instagram} target="https://www.instagram.com/seedaslamofficial/" rel="noopener noreferrer"><FaInstagram /></a>
               <a href={socialLinks.twitter} target="https://twitter.com/saeedaslam123" rel="noopener noreferrer"><FaTwitter /></a>
               <a href={socialLinks.facebook} target="https://web.facebook.com/saeedaslamofficials" rel="noopener noreferrer"><FaFacebook /></a>
+              <a href={socialLinks.whatsapp} target="https://web.whatsapp.com/saeedaslamofficials" rel="noopener noreferrer"><FaWhatsapp /></a>
             </div>
             <div className="pt-4 space-y-2">
               <button
@@ -570,27 +576,70 @@ const Portfolio = () => {
       </section>
 
       {/* Appointments */}
-      <section id="appointments" className="py-20 bg-gradient-to-b from-white to-gray-50 text-center px-4">
-        <h2 className="text-3xl font-bold mb-4 text-teal-600">Book an Appointment</h2>
-        <p className="max-w-2xl mx-auto text-gray-700 mb-8">
-          For collaborations, interviews, or events.
-        </p>
-        <form
-          className="max-w-md mx-auto space-y-4"
-          onSubmit={handleAppointment}
-        >
-          <InputField type="text" name="name" placeholder="Your Name" icon={<FaUser />} />
-          <InputField type="email" name="email" placeholder="Your Email" icon={<FaEnvelope />} />
-          <InputField type="text" name="topic" placeholder="Collaboration Topic" />
-          <InputField type="text" name="phone" placeholder="Phone No" icon={<FaPhone />} />
-          <InputField type="date" name="date" />
-          <InputField type="time" name="time" />
-          <input name="user_id" type="hidden" value={currentUser?.id || ''} />
-          <button type="submit" className="px-6 py-3 bg-teal-600 text-white rounded hover:bg-teal-700 transition">
-            Book Now
-          </button>
-        </form>
-      </section>
+<section
+  id="appointments"
+  className="py-20 bg-gradient-to-b from-white to-gray-50 text-center px-4"
+>
+  <h2 className="text-3xl font-bold mb-4 text-teal-600">Book an Appointment</h2>
+  <p className="max-w-2xl mx-auto text-gray-700 mb-8">
+    For collaborations, interviews, or events.
+  </p>
+  <form className="max-w-md mx-auto space-y-4" onSubmit={handleAppointment}>
+    <InputField
+      type="text"
+      name="name"
+      placeholder="Your Name"
+      icon={<FaUser />}
+    />
+    <InputField
+      type="email"
+      name="email"
+      placeholder="Your Email"
+      icon={<FaEnvelope />}
+    />
+    <InputField type="text" name="topic" placeholder="Collaboration Topic" />
+    <InputField
+      type="text"
+      name="phone"
+      placeholder="Phone No"
+      icon={<FaPhone />}
+    />
+
+    {/* Date input with placeholder fix */}
+    <div className="relative">
+      <input
+        type="date"
+        name="date"
+        placeholder=" "
+        className="peer w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
+      />
+      <label className="absolute left-3 top-2 text-gray-400 text-sm peer-placeholder-shown:visible peer-valid:hidden peer-focus:hidden">
+        Select Date
+      </label>
+    </div>
+
+    {/* Time input with placeholder fix */}
+    <div className="relative">
+      <input
+        type="time"
+        name="time"
+        placeholder=" "
+        className="peer w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
+      />
+      <label className="absolute left-3 top-2 text-gray-400 text-sm peer-placeholder-shown:visible peer-valid:hidden peer-focus:hidden">
+        Select Time
+      </label>
+    </div>
+
+    <input name="user_id" type="hidden" value={currentUser?.id || ""} />
+    <button
+      type="submit"
+      className="px-6 py-3 bg-teal-600 text-white rounded hover:bg-teal-700 transition"
+    >
+      Book Now
+    </button>
+  </form>
+</section>
 
       {/* Contact */}
       <section id="contact" className="py-20 bg-gradient-to-b from-gray-50 to-white text-center px-4">
@@ -614,16 +663,34 @@ const Portfolio = () => {
         </form>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-black text-white py-6 text-center px-4">
-        <p>© 2025 Saeed Aslam. All rights reserved.</p>
-        <div className="flex justify-center space-x-4 mt-3 text-xl text-teal-500">
-          <a href={socialLinks.youtubeMain} target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
-          <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
-          <a href={socialLinks.twitter} target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
-          <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer"><FaFacebook /></a>
-        </div>
-      </footer>
+   {/* Footer */}
+<footer className="bg-black text-white py-6 text-center px-4">
+  <p>© 2025 Saeed Aslam. All rights reserved.</p>
+
+  {/* Contact Info */}
+  <div className="mt-3 space-y-1">
+    <p className="text-sm">
+      📧 <a href="mailto:haideraslam922@gmail.com" className="text-teal-400 hover:underline">
+        haideraslam922@gmail.com
+      </a>
+    </p>
+    <p className="text-sm">
+      📞 <a href="tel:03401477595" className="text-teal-400 hover:underline">
+        03401477595
+      </a>
+    </p>
+  </div>
+
+  {/* Social Links */}
+  <div className="flex justify-center space-x-4 mt-4 text-xl text-teal-500">
+    <a href={socialLinks.youtubeMain} target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
+    <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+    <a href={socialLinks.twitter} target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
+    <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer"><FaFacebook /></a>
+    <a href="https://web.whatsapp.com/saeedaslamofficials" target="_blank" rel="noopener noreferrer"><FaWhatsapp /></a>
+  </div>
+</footer>
+
 
       {/* Login Modal */}
       {showLogin && (

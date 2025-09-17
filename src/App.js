@@ -5,6 +5,7 @@ import Users from "./Admin/Users";
 import Videos from "./Admin/Videos";
 import Contacts from "./Admin/Contacts";
 import Appointments from "./Admin/Appointments";
+import Home from "./Admin/Home";
 import Layout from './Admin/Layout';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="videos" element={<Videos />} />
           <Route path="appointments" element={<Appointments />} />
             <Route path="contacts" element={<Contacts />} />
+            <Route path="home" element={<Home />} />
         </Route>
       </Routes>
     </Router>

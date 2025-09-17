@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AppoinmentController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\HomeController;
 
 
 
@@ -58,4 +59,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });  
 
-
+//home content 
+Route::prefix('home')->group(function () {
+    Route::get('/', [HomeController::class, 'index']);
+    Route::post('/', [HomeController::class, 'store']);
+    Route::get('/public', [HomeController::class, 'publicContent']);
+    Route::get('/{id}', [HomeController::class, 'show']);
+    Route::delete('/{id}', [HomeController::class, 'destroy']);
+});
